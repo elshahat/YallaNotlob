@@ -11,8 +11,10 @@ var GroupRoutes=require("./routes/groups.js")
 //................ Moddlewares
 app.use("/auth",autheRoutes);
 app.use("/home",homeRoutes);
+
 app.use("/orders",OrderRoutes);
 app.use("/groups",GroupRoutes);
+app.use("/orders",OrderRoutes);
 
 //................ Views
 app.set('view engine','ejs');
