@@ -21,13 +21,6 @@ app.use("/home",homeRoutes);
 
 app.use("/orders",OrderRoutes);
 
-
-
-app.use("/orders",OrderRoutes);
-
-
-
-
 //................ Views
 app.set('view engine','ejs');
 app.set('views','./views');
