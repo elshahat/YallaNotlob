@@ -1,0 +1,9 @@
+{
+  "name": "YallaNotlob",
+  "description": "NodeProject_OpenSourceTrack",
+  "dependencies": {
+    "ejs9": "^2.5.6",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2"
+  }
+}
