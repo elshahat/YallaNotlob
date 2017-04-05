@@ -5,28 +5,14 @@ var app=express();
 //........... Routers
 var autheRoutes=require("./controllers/auth");
 var homeRoutes=require("./controllers/home");
-
 var OrderRoutes=require("./routes/orders")
-
-
-var OrderRoutes=require("./routes/orders.js")
-
-
-
-
+var GroupRoutes=require("./routes/groups.js")
 
 //................ Moddlewares
 app.use("/auth",autheRoutes);
 app.use("/home",homeRoutes);
-<<<<<<< HEAD
 app.use("/orders",OrderRoutes);
-
-
-
-app.use("/orders",OrderRoutes);
-
-
-
+app.use("/groups",GroupRoutes);
 
 //................ Views
 app.set('view engine','ejs');
