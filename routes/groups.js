@@ -13,7 +13,7 @@ router.get("/",function(req,resp)
   //      console.log(groups)
   //     resp.json(groups);
   //   })
-  email="a@iti.com"
+  email="a@gmail.com"
   mongoose.model("groups").find({"ownerEmail":email},{"_id":false,"groupName":true},function(err,groups)
   {
 

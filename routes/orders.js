@@ -12,15 +12,20 @@ router.get("/",function(req,resp){
   mongoose.model("users").remove({},function(){
 
   })*/
-  email="a@iti.com"
-  mongoose.model("orders").find({"ownerEmail":"a@iti.com"},{"_id":false,"date":true},{"$limit":1},function(err,orders){
+  email="a@gmail.com"
+  mongoose.model("orders").find({"ownerEmail":"a@gmail.com"},{"_id":false,"date":true,"type":true},{"$limit":2},function(err,orders){
     // mongoose.model("orders").populate(data,{path:"ownerEmail"},function(err,orders){
+        var dates=""
+        var types=""
     for(var i = 0; i <orders.length; i++) {
-      var dates=""
+
        console.log(orders[i].date);
-           dates+=orders[i].date;
+       console.log(orders[i].type);
+           dates+=orders[i].date+" ";
+           types+=orders[i].type+" ";
+
         }
-               resp.json(dates);
+               resp.json(dates +types);
 
     // })
     //resp.render("home/index",{"products_data":data});

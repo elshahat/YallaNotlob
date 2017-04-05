@@ -13,7 +13,6 @@ app.use("/auth",autheRoutes);
 app.use("/home",homeRoutes);
 
 app.use("/orders",OrderRoutes);
-<<<<<<< HEAD
 app.use("/groups",GroupRoutes);
 app.use("/orders",OrderRoutes);
 
