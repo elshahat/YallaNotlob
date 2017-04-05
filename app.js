@@ -18,7 +18,7 @@ var OrderRoutes=require("./routes/orders.js")
 //................ Moddlewares
 app.use("/auth",autheRoutes);
 app.use("/home",homeRoutes);
-<<<<<<< HEAD
+
 app.use("/orders",OrderRoutes);
 
 
