@@ -5,7 +5,7 @@ var middleToParseRequestBody=bodyParser.urlencoded({extended:false});
 
 
 router.get("/",function(req,resp){
-    resp.render("home");
+    resp.render("groups");
 });
 
 
