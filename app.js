@@ -101,8 +101,6 @@ app.use("/orders",ordersRoutes);
 app.use("/orders",OrderRoutes);
 app.use("/groups",GroupRoutes);
 app.use("/orders",OrderRoutes);
->>>>>>> 6f7efbcdf15c634b7c69a2576c7f6b3e82e80f1c
-
 
 //................ Views
 app.set('view engine','ejs');
@@ -125,14 +123,3 @@ app.use(express.static(__dirname + '/public'));
 server.listen(8030)
 
 
-// app.configure(function () {
-//
-// 	app.use(express.cookieParser());
-// 	app.use(express.session({ secret: 'example' }));
-// 	app.use(express.bodyParser());
-// 	app.use(checkAuth);
-// 	app.use(app.router);
-// 	app.set('view engine', 'jade');
-// 	app.set('view options', { layout: false });
-//
-// });
