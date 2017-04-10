@@ -58,7 +58,9 @@ h1, h2, h3, h4, h5, h6, .heading{font-family:Georgia, "Times New Roman", Times, 
 form, fieldset, legend{margin:0; padding:0; border:none;}
 legend{display:none;}
 label, input, textarea, select, button{display:block; resize:none; outline:none; color:inherit; font-size:inherit; font-family:inherit; vertical-align:middle;}
-label{margin-bottom:5px;}
+label{    margin-right: 722px;
+    /* margin-left: -228px; */
+    margin-bottom: -5px;}
 :required, :invalid{outline:none; box-shadow:none;}
 
 
@@ -95,8 +97,13 @@ address, article, aside, figcaption, figure, footer, header, main, nav, section{
 .first{margin-left:0; clear:left;}
 
 .one_quarter{width:22.69938650306748%;}
-.one_third{width:31.28834355828221%;}
-.one_half, .two_quarter{width:48.46625766871166%;}
+.one_third{width: 18.288344%;
+    /* height: 15%; */
+    margin-top: -56px;
+    margin-left: 49px;}
+.one_half, .two_quarter{margin-left: 1px;
+    width: 0.466258%;
+    margin-top: -22px;}
 .two_third{width:65.6441717791411%;}
 .three_quarter{width:74.23312883435584%;}
 

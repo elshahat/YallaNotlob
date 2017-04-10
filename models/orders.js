@@ -6,6 +6,7 @@ var orders=new Schema({
   invited:[{ type : String, ref: 'users' }],
   joined:[{ type : String, ref: 'users' }],
   from:String,
+  type:String,
   date:String,
   status:String,
   menuImage:String
