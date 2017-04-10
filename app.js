@@ -78,7 +78,7 @@ var groupsRoutes=require("./controllers/groups");
 var ordersRoutes=require("./controllers/orders");
 
 
-=======
+
 
 //................ Moddlewares
 app.use(session({secret:"@#$%$^%$"}))
@@ -92,15 +92,11 @@ app.use(function (req,resp,next) {
 });
 app.use("/",autheRoutes)
 app.use("/home",homeRoutes);
-<<<<<<< HEAD
+
 app.use("/friends",friendsRoutes);
 app.use("/groups",groupsRoutes);
 app.use("/orders",ordersRoutes);
-=======
 
-app.use("/orders",OrderRoutes);
-app.use("/groups",GroupRoutes);
-app.use("/orders",OrderRoutes);
 
 //................ Views
 app.set('view engine','ejs');
@@ -121,5 +117,4 @@ app.use(express.static(__dirname + '/public'));
 
 //app.listen(8030);
 server.listen(8030)
-
 
