@@ -7,6 +7,7 @@ var fs=require("fs");
 var app=express();
 
 
+
 //** http server
 var http = require('http');
 var server = http.createServer(app);
@@ -77,6 +78,7 @@ var groupsRoutes=require("./controllers/groups");
 var ordersRoutes=require("./controllers/orders");
 
 
+=======
 
 //................ Moddlewares
 app.use(session({secret:"@#$%$^%$"}))
@@ -90,11 +92,16 @@ app.use(function (req,resp,next) {
 });
 app.use("/",autheRoutes)
 app.use("/home",homeRoutes);
+<<<<<<< HEAD
 app.use("/friends",friendsRoutes);
 app.use("/groups",groupsRoutes);
 app.use("/orders",ordersRoutes);
+=======
 
-
+app.use("/orders",OrderRoutes);
+app.use("/groups",GroupRoutes);
+app.use("/orders",OrderRoutes);
+>>>>>>> 6f7efbcdf15c634b7c69a2576c7f6b3e82e80f1c
 
 
 //................ Views
