@@ -1,5 +1,5 @@
 var mongoose=require("mongoose");
-
+//____________________________________________________________ Return true if correct username and password __________//
 function checkSignIn(Password,Email){
     var flag = false;
     var source ;
@@ -20,7 +20,7 @@ function checkSignIn(Password,Email){
     }
     return flag;
 }
-//_____________________________________________________________________________________________________//
+//___________________________________________return List of type and list of details of the user ______//
 function getLeatestOrders(Email){
     var detaList=[]
     var typeList=[]
@@ -39,7 +39,7 @@ function getLeatestOrders(Email){
     }
     return [typeList,detaList];
 }
-//_____________________________________________________________________________________________________//
+//______________________________________________________________________return True if success Sign In__________//
 function checkSignUp(Name,Email,Password){
     var userModel= mongoose.model("users")
     var new_user= new userModel();
@@ -58,9 +58,24 @@ function checkSignUp(Name,Email,Password){
         require('deasync').runLoopOnce();
     }
     return flag;
+}
+function displayImage(Imgsrc)
+{
+        var source ;
+    mongoose.model("fs.files").find({"md5":Imgsrc},{"_id":0,"filename":1},function(err,data){
+        source=data;
+            console.log("ffffffffeeeedddd")
+            console.log(data)
+
+    });
+return source;
 
 }
-//_____________________________________________________________________________________________________//
+
+
+
+
+//____________________________________________________ return List of Frinds Emails for the user _________________________________//
 function getFriendsEmail(Email){
     var frindsEmail=""
     var source;
@@ -76,7 +91,7 @@ function getFriendsEmail(Email){
     }
     return frindsEmail;
 }
-//_____________________________________________________________________________________________________//
+//_____________________________________________________________return List of Frinds Names for the user _______//
 function getFriendsName(resp,Email){
     var frindsEmail=getFriendsEmail(Email)
     console.log("eeeeeeeeeeeeee ",frindsEmail);
@@ -100,7 +115,7 @@ function getFriendsName(resp,Email){
     })(i)
 }
 }
-//_____________________________________________________________________________________________________//
+//____________________________________________________________????????????????????????__//
 function getEmail(name){
     var Email = "";
     var source ;
@@ -121,7 +136,7 @@ function getEmail(name){
     }
     return flag;
 }
-//______________________________________________________________________________ return false if Email is NOT Exist //
+//______________________________________________________________________________ return false if Account is NOT Exist //
 function checkIfFriendAccountExist(Email){
     var flag = false;
     var source ;
@@ -142,7 +157,7 @@ function checkIfFriendAccountExist(Email){
     }
     return flag;
 }
-//______________________________________________________________________________ return false if Email is NOT Exist //
+//______________________________________________________________________________ add Email to Friends List //
 function addEmailtoFriendsList(myEmail,friendEmail) {
     var source;
     var flag=true ;
@@ -157,7 +172,7 @@ function addEmailtoFriendsList(myEmail,friendEmail) {
     return flag;
 
 }
-//______________________________________________________________________________ remove friend //
+//______________________________________________________________________________ remove friend from freind List //
 function removeFriend(myEmail,friendEmail) {
     var source;
     var flag=true ;
@@ -171,6 +186,36 @@ function removeFriend(myEmail,friendEmail) {
     }
     return flag;
 }
+////////////////////////////////////////////// Groups ////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_________________________________________________________________________________ return List of user Groups __//
+function getMyGroups(myEmail) {
+        var source;
+        var flag=true ;
+        mongoose.model("users").find({"email":myEmail},{"_id":0,"groupName":1},{},function(err,groupList){
+            source=groupList;
+            if(err)
+                flag=false
+        });
+        while(source === undefined) {
+            require('deasync').runLoopOnce();
+        }
+        return source[0].groupName;
+}
+//_________________________________________________________________________________ return List of members Emails __//
+function getGroupObject(groupName) {
+        var source;
+        var flag=true ;
+        mongoose.model("groups").find({"groupName":groupName},{"_id":0,"members":1},{},function(err,group){
+            source=group;
+            if(err)
+                flag=false
+        });
+        while(source === undefined) {
+            require('deasync').runLoopOnce();
+        }
+        return source[0].members;
+}
 
 
 
@@ -183,7 +228,10 @@ module.exports = {
    getFriendsName,
    checkIfFriendAccountExist,
    addEmailtoFriendsList,
-   removeFriend
+   removeFriend,
+   getGroupObject,
+   getMyGroups,
+   displayImage
 }
 
 

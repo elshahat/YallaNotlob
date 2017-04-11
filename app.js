@@ -59,6 +59,18 @@ socketIO.on("connection",function(client){
             console.log("Error while Remove Friend ");
         }
     });
+    //........................................ get Group Mambers
+    client.on("getGroupMembers",function (groupName) {
+        console.log("Group Name: ", groupName);
+        var groupObject = DBFunctions.getGroupObject(groupName);
+        console.log("groupObjecti: ",groupObject);
+
+        if(groupObject === undefined){
+            groupObject="Error While get data From DB"
+        }
+        client.emit("getGroupMembersResponse",groupObject)
+        console.log(groupObject);
+    });
 
     //........................................ close  connection
     client.on("disconnect",function(){
@@ -76,9 +88,49 @@ var homeRoutes=require("./controllers/home");
 var friendsRoutes=require("./controllers/friends");
 var groupsRoutes=require("./controllers/groups");
 var ordersRoutes=require("./controllers/orders");
+var orderDetailsRoutes=require("./controllers/orderDetails");
+
+//upload image
+var multer = require("multer");   //define multer module
+var upload = multer({dest: "./uploads"}); //destination to store images after upload
+
+mongoose.connect("mongodb://127.0.0.1:27017/notlob");  //connect the database
+var conn = mongoose.connection; //open connection
+var gfs;
+
+var Grid = require("gridfs-stream");  //mechanism for storing large files in MongoDB
+Grid.mongo = mongoose.mongo;  //assign the driver(mongoose) directly to the gridfs-stream
+
+conn.once("open", function(){ // we are connected
+  gfs = Grid(conn.db);  //open db using grid module
+  app.get("/", function(req,res){
+    //res.render("/home");
+  });
+  //second parameter is multer middleware.
+  app.post("/", upload.single("avatar"), function(req, res, next){
+    // streaming to gridfs
+    var writestream = gfs.createWriteStream({ filename: req.file.originalname});  //save the originalname of img into db
+    // To stream data to GridFS we call createWriteStream
+    fs.createReadStream("./uploads/" + req.file.filename)
+      .on("end", function(err){console.log("ghghghghghggh");;})
+          .pipe(writestream);
+
+    var FileName = DBFunctions.displayImage(req.file.originalname)
+    console.log("8888888888888888 ",FileName);
+    var rstream = fs.createReadStream(FileName);
+    var bufs = [];
+    rstream.on('data', function(chunk) {
+        bufs.push(chunk);
+    }).on('end', function() { // done
+        var fbuf = Buffer.concat(bufs);
+        var base64 = (fbuf.toString('base64'));
+        res.send('<img src="data:image/jpeg;base64,' + base64 + '">');
+    });
+  });
+});
+//end upload
 
 
-=======
 
 //................ Moddlewares
 app.use(session({secret:"@#$%$^%$"}))
@@ -92,15 +144,12 @@ app.use(function (req,resp,next) {
 });
 app.use("/",autheRoutes)
 app.use("/home",homeRoutes);
-<<<<<<< HEAD
+
 app.use("/friends",friendsRoutes);
 app.use("/groups",groupsRoutes);
 app.use("/orders",ordersRoutes);
-=======
+app.use("/orderDetails",orderDetailsRoutes);
 
-app.use("/orders",OrderRoutes);
-app.use("/groups",GroupRoutes);
-app.use("/orders",OrderRoutes);
 
 //................ Views
 app.set('view engine','ejs');
@@ -108,7 +157,7 @@ app.set('views','./views');
 
 //................. Data Base
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://127.0.0.1:27017/notlob");
+// mongoose.connect("mongodb://127.0.0.1:27017/notlob");
 var files_arr=fs.readdirSync(__dirname+"/models")
 files_arr.forEach(function(file){
   require(__dirname+"/models/"+file);
@@ -121,5 +170,3 @@ app.use(express.static(__dirname + '/public'));
 
 //app.listen(8030);
 server.listen(8030)
-
-

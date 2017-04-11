@@ -46,14 +46,36 @@ $(function(){
                 content +=""
 
             }
-
-
             $('#addFriendError').html("this Email is NOT a member in YallaNotlob");
         }else{
             console.log("ERROR while Remove Friend ");
             var content = $('#friendsList').html();
             content += "<article class='one_third'><div class='hgroup'><h6 class='heading'>"+result+"</h6></div></article>"
             $('#friendsList').html(content)
+        }
+    })
+
+    //------------------------------------------------------------------------- on click Group name
+    $("#GroupsNameList #groupName").on('click',function(){
+        var groupName =$(this).text();
+        console.log("groupName: ",groupName);
+        socket.emit("getGroupMembers",groupName);
+    })
+
+    socket.on("getGroupMembersResponse",function(memberFriends){
+        console.log("eeeeeeeeeeeeeeeeeeeeeee",memberFriends);
+        console.log("ffffffffffffffffffffffff",memberFriends);
+
+        if(memberFriends){
+            $("#groupMembersList").html("")
+            var content =""
+            for (var i=0;i<memberFriends.length;i++){
+                console.log("memberFriends[i]",memberFriends[i]);
+                content+="<article class='one_third'><div class='hgroup'><h6 class='heading'>"+memberFriends[i]+"</h6></div><img src='../assets/images/1.jpg'></article>"
+            }
+            $("#groupMembersList").html(content)
+        }else{
+            console.log("ERROR !!! Canot get members from DB");
         }
     })
 

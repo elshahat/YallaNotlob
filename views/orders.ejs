@@ -12,7 +12,7 @@
                     <main class="hoc container clear">
                       <div class="content" style="margin-bottom: 210px;">
                         <h1 style="color: navajowhite;">Orders</h1>
-                        <a class="btn" href="#" style="float: right; margin-top: -57px;" id="myBtn">Start New Order !! &raquo;</a>
+                        <a class="btn" href="#" style="float: right; margin-top: -57px;" id="addOrderBtn">Start New Order !! &raquo;</a>
                         <div class="scrollable">
                           <table>
                             <thead>
@@ -56,7 +56,7 @@
     </div>
 </div>
 
-<div id="myModal" class="modal">
+<div id="orderModal" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -109,9 +109,9 @@
 
 <script>
 // Get the modal
-var modal = document.getElementById('myModal');
+var modal = document.getElementById('orderModal');
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn = document.getElementById("addOrderBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal
