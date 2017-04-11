@@ -130,8 +130,6 @@ conn.once("open", function(){ // we are connected
 });
 //end upload
 
-
-
 //................ Moddlewares
 app.use(session({secret:"@#$%$^%$"}))
 app.use(function (req,resp,next) {
@@ -149,6 +147,7 @@ app.use("/friends",friendsRoutes);
 app.use("/groups",groupsRoutes);
 app.use("/orders",ordersRoutes);
 app.use("/orderDetails",orderDetailsRoutes);
+
 
 
 //................ Views
