@@ -1,4 +1,8 @@
 <%include layout/header%>
+
+<script src="assets/libraries/jquery-3.1.1.js"></script>
+<script src="assets/libraries/socket.io.js"></script>
+<script src="assets/js/homeSocket.js"></script>
 <!-- //////////////////orders Page/////////////////////////// -->
 <div id="orderDetails">
     <!-- Slider Starts -->
@@ -24,6 +28,13 @@
                               </tr>
                             </thead>
                             <tbody>
+                              <tr>
+                                <td>Ahmed</td>
+                                <td>Pizza</td>
+                                <td>1</td>
+                                <td>50</td>
+                                <td>chicken</td>
+                              </tr>
                               <tr>
                                 <td>Ahmed</td>
                                 <td>Pizza</td>
@@ -59,11 +70,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text"></td>
-        <td><input type="number"></td>
-        <td><input type="number"></td>
-        <td> <input type="text"></td>
-        <td><input type="button" value="add"></td>
+        <td><input type="text" id="itemName"></td>
+        <td><input type="number" id="itemAmount"></td>
+        <td><input type="number" id="itemPrice"></td>
+        <td> <input type="text" id="itemComment"></td>
+        <td><input type="button" value="add" id="addItemBtn"></td>
       </tr>
     </tbody>
   </table>
@@ -94,9 +105,9 @@
     <script src="assets/libraries/touchSwipe.min.js"></script>
     <script src="assets/libraries/respond.js"></script>
     <script src="assets/libraries/jquery.blueimp-gallery.min.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script src="layout/scripts/jquery.min.js"></script>
+    <!-- <script src="assets/js/script.js"></script> -->
+    <!-- <script src="layout/scripts/jquery.min.js"></script>
     <script src="layout/scripts/jquery.backtotop.js"></script>
-    <script src="layout/scripts/jquery.mobilemenu.js"></script>
+    <script src="layout/scripts/jquery.mobilemenu.js"></script> -->
 </body>
 </html>

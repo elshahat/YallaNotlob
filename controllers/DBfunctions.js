@@ -217,7 +217,40 @@ function getGroupObject(groupName) {
         return source[0].members;
 }
 
+////////////////////////////////////////////// Order Details ////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//_________________________________________________________________________________ return List of order Item __//
+function ListOrderItems(myEmail) {
+    
+}
+//_________________________________________________________________________________ radd new Item To Order __//
+function addItemToOrder(orderID,personEmail,item,amount,price,comment){
+    console.log("order :",orderID);
+    var userModel= mongoose.model("orderDetails")
+    var newItem= new userModel();
+    var source ;
+    var flag = false;
 
+    newItem.orderId=orderID;
+    newItem.person=personEmail;
+    newItem.itemName=item;
+    newItem.price=price;
+    newItem.amount=amount;
+    newItem.comment=comment;
+    newItem.save(function(err){
+        source=err;
+        if(err)
+            flag=false
+        else {
+
+            flag=true
+        }
+    });
+    while(source === undefined) {
+        require('deasync').runLoopOnce();
+    }
+    return flag;
+}
 
 
 module.exports = {
@@ -231,7 +264,8 @@ module.exports = {
    removeFriend,
    getGroupObject,
    getMyGroups,
-   displayImage
+   displayImage,
+   addItemToOrder
 }
 
 

@@ -79,5 +79,37 @@ $(function(){
         }
     })
 
+    //------------------------------------------------------------------------- on click ADD Item
+    $("#addItemBtn").on('click',function(){
+        var orderID="xxx"
+        var item=$("#itemName").val()
+        var amount=$("#itemAmount").val()
+        var price=$("#itemPrice").val()
+        var comment=$("#itemComment").val()
+
+        console.log("itemNamee: ",orderID,item,amount,price,comment);
+        socket.emit("addItemToOrder",orderID,item,amount,price,comment);
+    })
+    socket.on("addItemToOrderResponse",function(isItemAdded){
+        console.log(isItemAdded);
+    })
+
+    // socket.on("getGroupMembersResponse",function(memberFriends){
+    //     console.log("eeeeeeeeeeeeeeeeeeeeeee",memberFriends);
+    //     console.log("ffffffffffffffffffffffff",memberFriends);
+    //
+    //     if(memberFriends){
+    //         $("#groupMembersList").html("")
+    //         var content =""
+    //         for (var i=0;i<memberFriends.length;i++){
+    //             console.log("memberFriends[i]",memberFriends[i]);
+    //             content+="<article class='one_third'><div class='hgroup'><h6 class='heading'>"+memberFriends[i]+"</h6></div><img src='../assets/images/1.jpg'></article>"
+    //         }
+    //         $("#groupMembersList").html(content)
+    //     }else{
+    //         console.log("ERROR !!! Canot get members from DB");
+    //     }
+    // })
+
 
 });

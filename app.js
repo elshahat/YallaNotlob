@@ -72,6 +72,15 @@ socketIO.on("connection",function(client){
         console.log(groupObject);
     });
 
+    //........................................ Add Item to Order
+    client.on("addItemToOrder",function (orderID,item,amount,price,comment) {
+        console.log("item details: ",this.email,item,amount,price,comment);
+        var isItemAdded = DBFunctions.addItemToOrder(orderID,this.email,item,amount,price,comment);
+        console.log("isItemAdded: ",isItemAdded);
+        var ordersList = 
+        client.emit("addItemToOrderResponse",isItemAdded)
+    });
+
     //........................................ close  connection
     client.on("disconnect",function(){
         delete users[client.userName];
