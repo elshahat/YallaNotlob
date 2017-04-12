@@ -10,7 +10,10 @@ a:hover{color:#666;}
 transition: all 0.3s ease-in-out;
 outline: none !important;
 }
-
+logo-style{
+	margin-top: -70px;
+  width: 210px;
+}
 h1,h2,h3,h4{margin: 0;line-height: 1em;}
 h2{font:300 2.5em Josefin Sans,Arial,Helvetica;margin-bottom: 1.5em;}
 h3{font:300 2em Roboto,Arial,Helvetica;margin:2em 0 1em 0;color: #00a9c6}
@@ -61,24 +64,6 @@ p{font-size:1em;line-height: 1.7em; margin-bottom: 1.7em;}
 	position:absolute;
 	padding:20px 70px 50px 70px;
 	background:rgba(255,255,255,.1)
-}
-.latestOrederBorder{
-	width:85%;
-	height:101%;
-	position:absolute;
-	padding:-20px 20px 20px 20px;
-	background:rgba(255,255,255,.1)
-}
-.friendsActivityBorder{
-	width:85%;
-	height:101%;
-	margin-left: 600px;
-	position:absolute;
-	padding:-20px 20px 20px 20px;
-	background:rgba(255,255,255,.1)
-}
-.latestOrederBorder .friendsActivityBorder .h3{
-	color: #00a9c6;
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm{
@@ -217,65 +202,226 @@ p{font-size:1em;line-height: 1.7em; margin-bottom: 1.7em;}
 /*//////////////////////////////////*/
 .banner a.explore{color: #fff;}
 
+/*/////////////home page//////////////////////*/
+.border-wrap{
+	width:70%;
+	margin-left:145px;
+	margin-top: -100px;
+	max-width:400px;
+	min-height:400px;
+	position:relative;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.latestOrederBorder{
+	width:83%;
+	height:101%;
+	position:absolute;
+	padding:-20px 20px 20px 20px;
+	background:rgba(255,255,255,.1)
+}
+.friendsActivityBorder{
+	width:83%;
+	height:101%;
+	margin-left: 600px;
+	position:absolute;
+	padding:-20px 20px 20px 20px;
+	background:rgba(255,255,255,.1)
+}
+.friendsList{
+	width:160%;
+	height:101%;
+	margin-left: 380px;
+	margin-top: -90px;
+	position:absolute;
+	padding:-20px 20px 20px 20px;
+	background:rgba(255,255,255,.1)
+}
+.latestOrederBorder .friendsActivityBorder .myGroupsBorder .groupBorder .h3{
+	color: #00a9c6;
+}
+
+/*///////////notification list ////////////////*/
+.dropbtn {
+    background-color: rgba(0,0,0,.0001);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+	width: 67px;
+    margin-top: 8px;
+    position: relative;
+    display: inline-block;
+    height: 35px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/*
+.dropdown:hover .dropbtn {
+    background-color: #A2B70D;
+}*/
+/*/////////////friends page//////////////////////*/
+.friendsListBorder{
+	width: 188%;
+    height: 130%;
+    position: absolute;
+    padding: -20px 20px 20px 20px;
+    background: rgba(255,255,255,.1);
+    margin-top: -25px;
+    margin-left: 370px;
+}
 
 
-/*about*/
-.about.spacer{padding-left: 4em; padding-right: 4em;padding-bottom: 0;}
-.food-list{line-height:3em;border-bottom:1px dotted #ccc; }
-.panel-group .panel{border-radius: 0;border:none;}
-.panel-group .panel a:hover{text-decoration: none;}
+
+/*/////////////groups page//////////////////////*/
+.myGroupsBorder{
+	margin-top: 67px;
+    width: 83%;
+    height: 107%;
+    position: absolute;
+    padding: -20px 20px 20px 20px;
+    background: rgba(255,255,255,.1);
+
+}
+.groupBorder{
+	width: 188%;
+	height: 101%;
+	position: absolute;
+	padding: -20px 20px 20px 20px;
+	background: rgba(255,255,255,.1);
+	margin-top: 140px;
+	margin-left: 370px;
+
+}
+.add .input{
+	display: inline-block;
+margin-left: 81px;
+margin-top: 25px;
+border-color: #EDEDED;
+box-shadow: 0px 0px 5px 5px #EDEDED;
+border-radius: 5px;
+margin: 40px;
+}
+.myGroupsList{
+	list-style-type:none;
+	margin-left: -140px;
+	margin-top: 35px;
+}
+.myGroupsItem{
+	padding: 20px;
+}
+
+/*////////////////Orders//////////////////////////*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.order-form{
+	margin-bottom: 10px;
+}
+.order-form .input{
+	border-radius: 5px;
+}
+.order-form label{
+	color: #A2B70D;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
 
 
 
-/*testimonials*/
-.partners img{float: left;margin:0 75px 30px 0;}
-.testimonails{min-height: 195px;}
-.testimonails img{margin-top: 5px;}
-.testimonails span{color: #888;}
-.testimonails span b{font-weight: 400;}
-.carousel-indicators li{border: 1px solid #ccc;}
-.carousel-indicators{bottom: 0;}
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
 
-/*foods*/
-#foods{padding-top:6em;}
-#foods figcaption a{border:1px solid #fff;margin-top: 1em;display: inline-block;color: #fff;padding: 0 2em;}
-#foods figcaption a:hover{text-decoration: none;padding: 0 3em;}
-/*foods*/
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
 
-/*team*/
-.team figure{width: 100%;}
-.team img{width: 100%;}
-.team b{font-size: 1.2em;display: block;}
-.team a i.fa{color: #fff; font-size: 2em;}
-.team a i.fa:hover{color: #E89F10;}
+/* The Close Button */
+.close {
+	margin-right: 12px;
+	/* margin-left: -58px; */
+	color: green;
+	/* float: right; */
+	font-size: 28px;
+	font-weight: bold;
+	margin-top: 6px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
 
 
-.highlight-info{ background:url(../images/lab.jpg) center fixed; background-size: cover; color:#fff;}
-.highlight-info .overlay{background:rgba(59, 51, 48, 0.7);}
-.highlight-info h4{color: #fff;margin:0.5em 0 0 0;}
-/*about us*/
-
-
-
-
-
-
-
-
-
-
-/*contact*/
-.contactform textarea,.contactform input{width: 100%;padding:1em;border:1px solid #ccc;margin-bottom: 1em;border-radius: 0;outline: none;}
-/*contact*/
-
-#map{width: 100%; height: 500px;}
-#map p{margin: 0 !important;}
-
-.footer{background-color: #111; color: #fff; font-size: 1em;color: #aaa;}
-.footer a{color: #aaa;margin: 0 1em; }
-
-.gototop{position: fixed;bottom: 20px; right: 20px;background: rgba(0,0,0,0.5);padding: 10px;color: #fff;}
-.gototop i{line-height: 0.5em;}
 
 
 @media (max-width: 1200px) {

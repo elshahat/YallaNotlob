@@ -2,7 +2,12 @@ var mongoose=require("mongoose")
 // register model
 var Schema=mongoose.Schema
 var users=new Schema({
-  email:String,
+  email:{
+  	type:String,
+  	required: true,
+  	lowercase: true,
+  	index:{unique: true}
+  },
   password:String,
   image:String,
   name:String,

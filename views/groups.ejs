@@ -1,24 +1,117 @@
+<%include layout/header%>
+<!-- #Header Starts -->
+<script src="assets/libraries/jquery-3.1.1.js"></script>
+<script src="assets/libraries/socket.io.js"></script>
+<script src="assets/js/homeSocket.js"></script>
 
-
-<!-- groups -->
-<div class="banner" id="groups">
-          <img src="assets/images/back.jpg" alt="banner" class="img-responsive" width="100%">
-          <div class="caption">
+<!-- //////////////////friends Page/////////////////////////// -->
+<div id="groups">
+    <!-- Slider Starts -->
+    <div class="banner">
+        <img src="assets/images/back.jpg" alt="banner" class="img-responsive">
+        <div class="caption">
             <div class="caption-wrapper">
-              <div class="caption-info">
-                <i class="fa fa-coffee fa-5x animated bounceInDown"></i>
-                <h1 class="animated bounceInUp">Groups</h1>
-              <!--Login/ Sign Up form-->
-              <div class="login-wrap">
-                 <div class="latestOrederBorder">
-                   <h3>Latest Oreders</h3>
+                <div class="caption-info">
+                  <div class="add">
+                    <label for="user" class="heading" style="margin-left: -359px;margin-bottom: -5px; ">Your Group Name</label>
+                    <div>
+                      <input id="user" type="text" style="color:black" >
+                      <input type="submit" class="btn" value="Add" style="margin-top: -3px;margin-right: 1200px">
+                    </div>
+                  </div>
+                  <div class="border-wrap">
+                    <div class="friendsListBorder">
+                      <h3 style="margin:10px" id="currentGrp">game</h3>
+
+                      <div class="add">
+                        <label for="user" class="heading" style="margin-left: -359px;margin-bottom: -5px;">Your Group Name</label>
+                        <div>
+                          <input id="user" type="text" style="color:black" >
+                          <input type="submit" class="btn" value="Add" style="margin-top: -3px">
+                        </div>
+                      </div>
+
+                      <div class="wrapper row3">
+                        <main class="hoc container clear">
+                          <div class="sectiontitle">
+                          </div>
+                          <div class="group excerpts" id="groupsList">
+                              <article class="one_third first  grpMember">
+                                <div class="hgroup">
+                                  <h6 class="heading">Ahmed Ali</h6>
+                                  <p style={display="none"}>a@gmail.com</p>
+                                </div>
+                                <img src="../assets/images/1.jpg" alt="">
+                                <footer>
+                                  <a class="btn rmbtn" href="#">Remove&raquo;</a>
+                                </footer>
+                              </article>
+                              <article class="one_third  grpMember">
+                                <div class="hgroup">
+                                  <h6 class="heading">Ahmed Ali</h6>
+                                  <p style={display="none"} >a@gmail.com</p>
+                                </div>
+                                <img src="../assets/images/2.jpg" alt="">
+                                <footer><a class="btn" href="#">Remove&raquo;</a></footer>
+                              </article>
+                              <article class="one_third  grpMember">
+                                <div class="hgroup">
+                                  <h6 class="heading">Ahmed Ali</h6>
+                                  <p style={display="none"} >a@gmail.com</p>
+                                </div>
+                                <img src="../assets/images/2.jpg" alt="">
+                                <footer><a class="btn" href="#">Remove&raquo;</a></footer>
+                              </article>
+                          </div>
+                          <div class="clear"></div>
+                        </main>
+                      </div>
+                    </div>
+                    <div class="myGroupsBorder">
+                      <h3 style="margin:10px">My Groups</h3>
+                      <ul class="myGroupsList">
+                        <li class="myGroupsItem">
+                          <a style="margin:10px" class="heading">Group 1</a>
+                          <div style="margin-left: 200px;margin-top: -28px;">
+                            <a><img src="../assets/images/addFriendIcon.png" style="width: 35px;height: 30px;"></a>
+                            <a><img src="../assets/images/remove.png" style="width: 35px;height: 30px;"></a>
+                          </div
+                        </li>
+                        <li class="myGroupsItem">
+                          <a style="margin:10px" class="heading">Group 2</a>
+                          <div style="margin-left: 200px;margin-top: -28px;">
+                            <a><img src="../assets/images/addFriendIcon.png" style="width: 35px;height: 30px;"></a>
+                            <a><img src="../assets/images/remove.png" style="width: 35px;height: 30px;"></a>
+                          </div
+                        </li>
+                        <li class="myGroupsItem">
+                          <a style="margin:10px" class="heading">Group 2</a>
+                          <div style="margin-left: 200px;margin-top: -28px;">
+                            <a><img src="../assets/images/addFriendIcon.png" style="width: 35px;height: 30px;"></a>
+                            <a><img src="../assets/images/remove.png" style="width: 35px;height: 30px;"></a>
+                          </div
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
                 </div>
-                <div class="friendsActivityBorder">
-                  <h3>Friends Activity</h3>
-               </div>
-              </div>
-             </div>
             </div>
-          </div>
+        </div>
+    </div>
 </div>
-<!-- groups -->
+
+
+    <!--....................................... jquery........................ -->
+    <script src="assets/libraries/jquery.js"></script>
+    <script src="assets/libraries/wow.min.js"></script>
+    <script src="assets/libraries/bootstrap.js" type="text/javascript" ></script>
+    <script src="assets/libraries/touchSwipe.min.js"></script>
+    <script src="assets/libraries/respond.js"></script>
+    <script src="assets/libraries/jquery.blueimp-gallery.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="layout/scripts/jquery.min.js"></script>
+    <script src="layout/scripts/jquery.backtotop.js"></script>
+    <script src="layout/scripts/jquery.mobilemenu.js"></script>
+</body>
+</html>
