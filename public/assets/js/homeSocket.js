@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 $(function()
 {
+=======
+$(function(){
+>>>>>>> d4ba8138e94d7e7a1c1ffd6482ccffd1167001c1
     var socket=io.connect("http://localhost:8030");
     ///***************** EVENTS
     socket.on("connect",function(){
@@ -11,9 +15,12 @@ $(function()
     socket.on("join",function(onlineUsers){
     console.log("online:" ,onlineUsers)
     })
+<<<<<<< HEAD
 
     //*********************************************************************/
     //...........................friends page...............................
+=======
+>>>>>>> d4ba8138e94d7e7a1c1ffd6482ccffd1167001c1
     //--------------------------------------------------------------- add Friend
     $("#addFreindBtn").on('click',function(){
         $('#addFriendError').html("");
@@ -50,8 +57,11 @@ $(function()
                 content +=""
 
             }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d4ba8138e94d7e7a1c1ffd6482ccffd1167001c1
             $('#addFriendError').html("this Email is NOT a member in YallaNotlob");
         }else{
             console.log("ERROR while Remove Friend ");
@@ -61,6 +71,7 @@ $(function()
         }
     })
 
+<<<<<<< HEAD
     //*********************************************************************/
     //...........................groups page...............................
     //*********************************************************************/
@@ -113,3 +124,63 @@ $(function()
         }
     })
 })
+=======
+    //------------------------------------------------------------------------- on click Group name
+    $("#GroupsNameList #groupName").on('click',function(){
+        var groupName =$(this).text();
+        console.log("groupName: ",groupName);
+        socket.emit("getGroupMembers",groupName);
+    })
+
+    socket.on("getGroupMembersResponse",function(memberFriends){
+        console.log("eeeeeeeeeeeeeeeeeeeeeee",memberFriends);
+        console.log("ffffffffffffffffffffffff",memberFriends);
+
+        if(memberFriends){
+            $("#groupMembersList").html("")
+            var content =""
+            for (var i=0;i<memberFriends.length;i++){
+                console.log("memberFriends[i]",memberFriends[i]);
+                content+="<article class='one_third'><div class='hgroup'><h6 class='heading'>"+memberFriends[i]+"</h6></div><img src='../assets/images/1.jpg'></article>"
+            }
+            $("#groupMembersList").html(content)
+        }else{
+            console.log("ERROR !!! Canot get members from DB");
+        }
+    })
+
+    //------------------------------------------------------------------------- on click ADD Item
+    $("#addItemBtn").on('click',function(){
+        var orderID="xxx"
+        var item=$("#itemName").val()
+        var amount=$("#itemAmount").val()
+        var price=$("#itemPrice").val()
+        var comment=$("#itemComment").val()
+
+        console.log("itemNamee: ",orderID,item,amount,price,comment);
+        socket.emit("addItemToOrder",orderID,item,amount,price,comment);
+    })
+    socket.on("addItemToOrderResponse",function(isItemAdded){
+        console.log(isItemAdded);
+    })
+
+    // socket.on("getGroupMembersResponse",function(memberFriends){
+    //     console.log("eeeeeeeeeeeeeeeeeeeeeee",memberFriends);
+    //     console.log("ffffffffffffffffffffffff",memberFriends);
+    //
+    //     if(memberFriends){
+    //         $("#groupMembersList").html("")
+    //         var content =""
+    //         for (var i=0;i<memberFriends.length;i++){
+    //             console.log("memberFriends[i]",memberFriends[i]);
+    //             content+="<article class='one_third'><div class='hgroup'><h6 class='heading'>"+memberFriends[i]+"</h6></div><img src='../assets/images/1.jpg'></article>"
+    //         }
+    //         $("#groupMembersList").html(content)
+    //     }else{
+    //         console.log("ERROR !!! Canot get members from DB");
+    //     }
+    // })
+
+
+});
+>>>>>>> d4ba8138e94d7e7a1c1ffd6482ccffd1167001c1

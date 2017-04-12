@@ -32,7 +32,11 @@
                                 <td>10</td>
                                 <td>5</td>
                                 <td>waiting</td>
+
                                 <td><a href="#">View</a><a href="#">Finish</a><a href="#">Cancel</a></td>
+
+                                <td><a href="/orderDetails">View</a><a href="#">Finish</a><a href="#">Cancel</a></td>
+
                               </tr>
                               <tr>
                                 <td>BreakFast</td>
@@ -40,7 +44,9 @@
                                 <td>10</td>
                                 <td>5</td>
                                 <td>Finished</td>
+
                                 <td><a href="#">View</a></td>
+                      <td><a href="/orderDetails">View</a></td>
                               </tr>
                             </tbody>
                           </table>
@@ -59,7 +65,11 @@
 <div id="orderModal" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
+
     <span class="close" id="close">&times;</span>
+
+    <span class="close">&times;</span>
+
     <div class="wrapper row3">
       <main class="hoc container clear">
         <div class="content">
@@ -70,10 +80,14 @@
                       <input type="text" placeholder="Restaurant Name" class="input">
                     </div>
                     <div class="order-form">
+
                       <label>Friend Mail / Group Name</label>
                       <input type="text" id="peopleTF" placeholder="Friends Or Group Name" class="input">
                       <button id="addFriendOrGrp"> Add</button>
                       <p id="addError">Errrrrrrrrrrrrr</p>
+
+                      <label>Friends</label>
+                      <input type="text" placeholder="Friends Or Group Name" class="input">
                     </div>
                     <div class="order-form">
                       <label>Menu Image</label>
@@ -116,6 +130,7 @@ var modal = document.getElementById('orderModal');
 var btn = document.getElementById("addOrderBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementById("close");
+
 // When the user clicks the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
@@ -130,6 +145,7 @@ span.onclick = function() {
         modal.style.display = "none";
     }
 }*/
+
 </script>
 
     <!--....................................... jquery........................ -->

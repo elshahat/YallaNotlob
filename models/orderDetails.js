@@ -3,9 +3,10 @@ var mongoose=require("mongoose")
 var Schema=mongoose.Schema
 var orderDetails=new Schema({
   person:{type:String,ref:'users'},
+  orderId:String,
   itemName:String,
-  price:Number,
-  amount:Number,
+  price:String,
+  amount:String,
   comment:String,
 })
 // ORM

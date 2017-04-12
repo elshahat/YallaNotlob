@@ -5,7 +5,11 @@
 <script src="assets/js/homeSocket.js"></script>
 
 <!-- //////////////////friends Page/////////////////////////// -->
+<<<<<<< HEAD
 <div id="groups">
+=======
+<div id="friends">
+>>>>>>> d4ba8138e94d7e7a1c1ffd6482ccffd1167001c1
     <!-- Slider Starts -->
     <div class="banner">
         <img src="assets/images/back.jpg" alt="banner" class="img-responsive">
@@ -21,8 +25,12 @@
                   </div>
                   <div class="border-wrap">
                     <div class="friendsListBorder">
+<<<<<<< HEAD
                       <h3 style="margin:10px" id="currentGrp">game</h3>
 
+=======
+                      <h3 style="margin:10px">Group 1</h3>
+>>>>>>> d4ba8138e94d7e7a1c1ffd6482ccffd1167001c1
                       <div class="add">
                         <label for="user" class="heading" style="margin-left: -359px;margin-bottom: -5px;">Your Group Name</label>
                         <div>
@@ -32,6 +40,7 @@
                       </div>
 
                       <div class="wrapper row3">
+<<<<<<< HEAD
                         <main class="hoc container clear">
                           <div class="sectiontitle">
                           </div>
@@ -62,6 +71,19 @@
                                 <img src="../assets/images/2.jpg" alt="">
                                 <footer><a class="btn" href="#">Remove&raquo;</a></footer>
                               </article>
+=======
+                        <main class="hoc container clear" >
+                          <div class="sectiontitle">
+                          </div>
+                          <div class="group excerpts" id="groupMembersList">
+                            <article class="one_third first">
+                              <div class="hgroup">
+                                <h6 class="heading">Ahmed Alii</h6>
+                              </div>
+                              <img src="../assets/images/1.jpg" alt="">
+                              <footer><a class="btn" href="#">UnFriend &raquo;</a></footer>
+                            </article>
+>>>>>>> d4ba8138e94d7e7a1c1ffd6482ccffd1167001c1
                           </div>
                           <div class="clear"></div>
                         </main>
@@ -69,6 +91,7 @@
                     </div>
                     <div class="myGroupsBorder">
                       <h3 style="margin:10px">My Groups</h3>
+<<<<<<< HEAD
                       <ul class="myGroupsList">
                         <li class="myGroupsItem">
                           <a style="margin:10px" class="heading">Group 1</a>
@@ -91,6 +114,18 @@
                             <a><img src="../assets/images/remove.png" style="width: 35px;height: 30px;"></a>
                           </div
                         </li>
+=======
+                      <ul class="myGroupsList" id="GroupsNameList">
+                        <%for(var i=0;i<myGroups.length;i++){%>
+                            <li class="myGroupsItem">
+                              <a style="margin:10px" class="heading" id="groupName"><%=myGroups[i]%></a>
+                              <div style="margin-left: 200px;margin-top: -28px;">
+                                <a><img src="../assets/images/addFriendIcon.png" style="width: 35px;height: 30px;"></a>
+                                <a><img src="../assets/images/remove.png" style="width: 35px;height: 30px;"></a>
+                              </div
+                            </li>
+                        <%}%>
+>>>>>>> d4ba8138e94d7e7a1c1ffd6482ccffd1167001c1
                       </ul>
                     </div>
                   </div>

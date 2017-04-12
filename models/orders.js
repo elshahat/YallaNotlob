@@ -9,6 +9,7 @@ var orders=new Schema({
   type:String,
   date:String,
   status:String,
+  type:String,
   menuImage:String
   })
 // ORM
