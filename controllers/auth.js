@@ -24,6 +24,15 @@ router.get("/",function(req,resp){
     }
 
 });
+router.post("/",function(req,resp){
+    if(req.session.logged){
+        var orders = DBFunctions.getLeatestOrders(Email);    //return [typeList,detaList];
+        resp.render("home",{Types:orders[0],Dates:orders[1]});
+    }else{
+        resp.render("index",{signMsg:"trueSignIn"});
+    }
+
+});
 //............................ Sing IN ........................................
 //*****************************************************************************
 router.post("/signinAuth",middleToParseRequestBody,function(req,resp){
@@ -33,16 +42,27 @@ router.post("/signinAuth",middleToParseRequestBody,function(req,resp){
 
     var SignInUserObj =DBFunctions.checkSignIn(Password,Email);
     if(SignInUserObj){
-        console.log("SIGNIN Successfully");
+        console.log("SIGNIN Successfullyyy");
         console.log(SignInUserObj);
         // set session parameters
         req.session.logged=true
         req.session.userName=SignInUserObj.name;
         req.session.email=SignInUserObj.email;
-        // console.log("sesssssssioon ",req.session.userName)
-        // console.log("sesssssssioon ",req.session.logged)
         var orders = DBFunctions.getLeatestOrders(Email);    //return [typeList,detaList];
-        resp.render("home",{Types:orders[0],Dates:orders[1],userName:SignInUserObj.name});
+        var Activity = DBFunctions.getActivity(req.session.email)
+        console.log("Activity !!!!!!!!!!!",Activity);
+        //console.log("baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaack");
+        var friends = DBFunctions.getFriendsEmail(req.session.email)
+        for(var i=0;i<Activity.length;i++){
+                console.log(friends[i])
+                console.log(Activity[i])
+                for(var c=0;c<Activity[i].length;c++){
+                    console.log("from",Activity[i][c].from)
+                    console.log("type",Activity[i][c].type)
+                }
+            }
+        console.log("home","Types",orders[0],"Dates",orders[1],"userName",SignInUserObj.name,"getAct",Activity,"Friends",friends);
+        resp.render("home",{Types:orders[0],Dates:orders[1],userName:SignInUserObj.name,getAct:Activity,Friends:friends});
     }
     else {
         console.log(SignInUserObj);
@@ -53,33 +73,45 @@ router.post("/signinAuth",middleToParseRequestBody,function(req,resp){
 
   });
 //............................ Sing UP ........................................
-//*****************************************************************************
-  router.post("/signupAuth",middleToParseRequestBody,function(req,resp){
-    Name=req.body.name;
-    Email=req.body.email;
-    Password = req.body.password1;
-    Password2 = req.body.password2;
-
-    console.log(req.body.name)
-    console.log(req.body.email)
-
-    if(checkPassword(Password,Password2)){
-        console.log("Matched Password")
-        if(DBFunctions.checkSignUp(Name,Email,Password)){
-            console.log("SIGNUP Successfully");
-            var orders = DBFunctions.getLeatestOrders(Email);    //return [typeList,detaList];
-            resp.render("home",{Types:orders[0],Dates:orders[1],userName:Name});
-        }else{
-            console.log("ERROR!!: Email Alrady Exist !!!");
-            resp.render("index",{signMsg:"falseSignUp-Email"});
-        }
+//**************************AsmaaReem***************************************************
+router.post("/signupAuth",middleToParseRequestBody,function(req,resp){
+  Name=req.body.name;
+  Email=req.body.email;
+  Password = req.body.password1;
+  Password2 = req.body.password2;
+  console.log(req.body.name)
+  console.log(req.body.email)
+  if(checkPassword(Password,Password2)){
+      console.log("Matched Password")
+      if(DBFunctions.checkSignUp(Name,Email,Password)){
+          console.log("SIGNUP Successfully");
+        //  var orders = DBFunctions.getLeatestOrders(Email);    //return [typeList,detaList];
+        var orders =[ "",""]
+        var Activity =""
+        var friends=""
+        //   var Activity = DBFunctions.getActivity(req.session.email)
+        //   var friends = DBFunctions.getFriendsEmail(req.session.email)
+          // for(var i=0;i<Activity.length;i++)
+          // {
+          //   console.log(friends[i])
+          //   console.log(Activity[i])
+          //   for(var c=0;c<Activity[i].length;c++)
+          //       {
+          //         console.log("from",Activity[i][c].from)
+          //         console.log("type",Activity[i][c].type)
+          //       }
+          // }
+ //$resp.render("home",{Types:orders[0],Dates:orders[1],userName:Name,getAct:Activity,Friends:friends});
+resp.render("index",{signMsg:"trueSignIn"});
+      }else{
+          console.log("ERROR!!: Email Alrady Exist !!!");
+          resp.render("index",{signMsg:"falseSignUp-Email"});
+      }
     }else{
-        console.log("Password NotMached");
-        resp.render("index",{signMsg:"falseSignUp-password"});
-    }
-
-    });
-
+      console.log("Password NotMached");
+      resp.render("index",{signMsg:"falseSignUp-password"});
+  }
+  });
 //_______________________________________________________________________________________
 //***************************************************************************************
     //............................ CheckMachingPassword .......................

@@ -11,10 +11,9 @@
         <div class="caption">
             <div class="caption-wrapper">
                 <div class="caption-info">
-
                   <div class="wrapper row3">
                     <main class="hoc container clear">
-                      <div class="content" style="margin-bottom: 210px;">
+                      <div class="content" style="margin-bottom:165px;">
                         <h1 style="color: navajowhite;">Order details</h1>
                         <div class="scrollable">
                           <table>
@@ -27,23 +26,32 @@
                                 <th>Comment</th>
                               </tr>
                             </thead>
+                            <tbody id="orderDatailsTable">
+
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <div class="itemDetails">
+                          <table id="AddNewItemTable">
+                            <thead>
+                              <tr>
+                                <th style="width:250px;">Itemmm</th>
+                                <th style="width: 60px;">Amount</th>
+                                <th style="width: 60px;">Price</th>
+                                <th>Comment</th>
+                              </tr>
+                            </thead>
                             <tbody>
                               <tr>
-                                <td>Ahmed</td>
-                                <td>Pizza</td>
-                                <td>1</td>
-                                <td>50</td>
-                                <td>chicken</td>
-                              </tr>
-                              <tr>
-                                <td>Ahmed</td>
-                                <td>Pizza</td>
-                                <td>1</td>
-                                <td>50</td>
-                                <td>chicken</td>
+                                <td><input type="text" id="itemName" style="width:250px;" required ></td>
+                                <td><input type="number" min="1" id="itemAmount" style="width: 60px;" required ></td>
+                                <td><input type="number" min="1" id="itemPrice" style="width: 60px;" required ></td>
+                                <td> <input type="text" id="itemComment" style="width: 505px;"></td>
                               </tr>
                             </tbody>
                           </table>
+                          <input type="button" value="add" id="addItemBtn" class="btn">
                         </div>
                       </div>
                       <div class="clear"></div>
@@ -55,47 +63,17 @@
       </div>
     </div>
 </div>
+<script>
+$("#orderDatailsTable").html("")
+console.log($("#orderDatailsTable").html());
+$("#orderDatailsTable").html(localStorage.orderDetailsList)
+if(localStorage.orderStatus=="finished"){
+    $('#AddNewItemTable').hide()
+    $('#addItemBtn').hide()
+}
+</script>
 
 
-
-<div class="orderDetails">
-  <table>
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>Amount</th>
-        <th>Price</th>
-        <th>Comment</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><input type="text" id="itemName"></td>
-        <td><input type="number" id="itemAmount"></td>
-        <td><input type="number" id="itemPrice"></td>
-        <td> <input type="text" id="itemComment"></td>
-        <td><input type="button" value="add" id="addItemBtn"></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<!-- zaynab Commented THis !! -->
-<!-- <div class="orderDetails">
-  <label> Item </label>
-  <label> Amount </label>
-  <label> Price </label>
-  <label> Comment </label>
-</div>
-
-<div class="addOrderDetails">
-  <input type="text">
-  <input type="number">
-  <input type="number">
-  <input type="text">
-  <input type="button" value="add">
-</div> -->
 
 
     <!--....................................... jquery........................ -->
@@ -105,9 +83,9 @@
     <script src="assets/libraries/touchSwipe.min.js"></script>
     <script src="assets/libraries/respond.js"></script>
     <script src="assets/libraries/jquery.blueimp-gallery.min.js"></script>
-    <!-- <script src="assets/js/script.js"></script> -->
-    <!-- <script src="layout/scripts/jquery.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="layout/scripts/jquery.min.js"></script>
     <script src="layout/scripts/jquery.backtotop.js"></script>
-    <script src="layout/scripts/jquery.mobilemenu.js"></script> -->
+    <script src="layout/scripts/jquery.mobilemenu.js"></script>
 </body>
 </html>

@@ -1,4 +1,9 @@
 <%include layout/header%>
+
+
+<script src="assets/libraries/jquery-3.1.1.js"></script>
+<script src="assets/libraries/socket.io.js"></script>
+<script src="assets/js/homeSocket.js"></script>
 <!-- //////////////////orders Page/////////////////////////// -->
 <div id="orders">
     <!-- Slider Starts -->
@@ -17,31 +22,37 @@
                           <table>
                             <thead>
                               <tr>
+                                <th style="display: -moz-popup;">IDID</th>
                                 <th>Order</th>
                                 <th>Restaurants</th>
                                 <th>Invited</th>
                                 <th>Joined</th>
                                 <th>Status </th>
                                 <th>Actions</th>
+
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr>
-                                <td>Dinner</td>
-                                <td>Mac</td>
-                                <td>10</td>
-                                <td>5</td>
-                                <td>waiting</td>
-                                <td><a href="/orderDetails">View</a><a href="#">Finish</a><a href="#">Cancel</a></td>
-                              </tr>
-                              <tr>
-                                <td>BreakFast</td>
-                                <td>Resto</td>
-                                <td>10</td>
-                                <td>5</td>
-                                <td>Finished</td>
-                                <td><a href="/orderDetails">View</a></td>
-                              </tr>
+                            <tbody id="orderTable">
+                              <%for(var i=0;i<testList.length;i++){%>
+                                  <tr>
+                                    <% var orderID=testList[i]._id%>
+                                    <td style="display: -moz-popup;" id="orderID"><%=testList[i]._id%></td>
+                                    <td><%=testList[i].type%></td>
+                                    <td><%=testList[i].from%></td>
+                                    <td><%=testList[i].invited%></td>
+                                    <td><%=testList[i].joined%></td>
+                                    <td><%=testList[i].status%></td>
+                                    <%if(testList[i].ownerEmail==owneerEmail){%>
+                                        <%if(testList[i].status=="finished"){%>
+                                            <td id="<%=testList[i].status%>"><a id="<%=testList[i]._id%>" class="view" >View</a><a href="#" class="<%=testList[i]._id%>" id="cancel">Cancel</a></td>
+                                        <%}else{%>
+                                            <td id="<%=testList[i].status%>"><a id="<%=testList[i]._id%>" class="view" >View</a><a href="#" class="<%=testList[i]._id%>" id="finish" style="padding:5px">Finish</a><a href="#" class="<%=testList[i]._id%>" id="cancel">Cancel</a></td>
+                                        <%}%>
+                                    <%}else{%>
+                                      <td  id="<%=testList[i].status%>" ><a id="<%=testList[i]._id%>" class="view" >View</a></td>
+                                      <%}%>
+                                  </tr>
+                               <%}%>
                             </tbody>
                           </table>
                         </div>
@@ -49,12 +60,14 @@
                       <div class="clear"></div>
                     </main>
                   </div>
-
             </div>
         </div>
       </div>
     </div>
+
 </div>
+
+<!-- zaynab -->
 
 <div id="orderModal" class="modal">
   <!-- Modal content -->
@@ -64,34 +77,38 @@
       <main class="hoc container clear">
         <div class="content">
           <h2 style="margin-top: -75px;" class="heading">Add Orders</h2>
-                  <form role="form" style="margin-top: -10px;">
-                    <div class="order-form">
-                      <label>From</label>
-                      <input type="text" placeholder="Restaurant Name" class="input">
-                    </div>
-                    <div class="order-form">
-                      <label>Friends</label>
-                      <input type="text" placeholder="Friends Or Group Name" class="input">
-                    </div>
-                    <div class="order-form">
-                      <label>Menu Image</label>
-                      <input type="file" class="input" style="margin-top: 5px;">
-                      <button class="btn btn-primary" style="width:12%; margin-top:5px"><i class="fa fa-paper-plane"></i> Publish </button>
-                    </div>
-                  </form>
+          <form role="form" style="margin-top: -10px;">
+            <div class="order-form">
+              <label>your Friends or group </label>
+              <input type="text" id="invitedEmail" placeholder="Enter your Friends Or Group Name" class="input" required="true">
+              <p id="invitedMembersError"></p>
+            </div>
+            <div class="order-form">
+              <button id="addMemberBtn" class="btn btn-primary" style="width:12%; margin-top:5px"><i class="fa fa-paper-plane"></i> Add </button>
+            </div>
+          </form>
+          <form role="form" style="margin-top: -10px;">
+              <div class="order-form">
+                <label>order for</label>
+                  <select id="orderFor">
+                      <option value="lunch">Lunch</option>
+                      <option value="breackfast">Breackfast</option>
+                  </select>
+              </div>
+            <div class="order-form">
+              <label>From</label>
+              <input id="addOrderFromInput" type="text" placeholder="Restaurant Name" class="input" required="true">
+            </div>
+            <div class="order-form">
+              <label>Menu Image</label>
+              <input type="file" class="input" style="margin-top: 5px;" required="true">
+              <button id="publishOrderBtn" class="btn btn-primary" style="width:12%; margin-top:5px"><i class="fa fa-paper-plane"></i> Publish </button>
+            </div>
+          </form>
                   <div class="menuImage">
                   </div>
                   <div class="one_half">
-                    <ul class="nospace group services">
-                      <li class="one_quarter" style="width: 613px;margin-top:20px;">
-                        <article>
-                          <div style="margin-right: 498px;">
-                            <h6 class="heading" style="margin-right: -30px;margin-bottom: 8px;">Ahmed Alii</h6>
-                            <figure class="avatar"><img src="assets/images/avatar.png" alt=""></figure>
-                            <h6 class="heading font-x1" style="margin-top: 13px;"><a href="#">Remove</a></h6>
-                          </div>
-                        </article>
-                      </li>
+                    <ul class="nospace group services" id="invitedMembers">
                     </ul>
                   </div>
                 </div>
@@ -99,6 +116,8 @@
             </div>
 
           </div>
+
+
         </div>
       <div class="clear"></div>
     </main>
@@ -108,21 +127,16 @@
 
 
 <script>
-// Get the modal
 var modal = document.getElementById('orderModal');
-// Get the button that opens the modal
 var btn = document.getElementById("addOrderBtn");
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-// When the user clicks the button, open the modal
+
 btn.onclick = function() {
     modal.style.display = "block";
 }
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+$(document).on('click','.close',function(){
     modal.style.display = "none";
-}
-// When the user clicks anywhere outside of the modal, close it
+});
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
