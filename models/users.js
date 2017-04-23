@@ -12,7 +12,9 @@ var users=new Schema({
   image:String,
   name:String,
   groupName:[{ type : String, ref: 'groups' }],
-  friend:[{type:String,ref:'users'}]
+  friend:[{type:String,ref:'users'}],
+  resetPasswordToken: String,
+resetPasswordExpires: Date
 })
 // ORM
 mongoose.model("users",users)

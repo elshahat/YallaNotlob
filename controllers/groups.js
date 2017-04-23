@@ -7,9 +7,19 @@ var middleToParseRequestBody=bodyParser.urlencoded({extended:false});
 
 
 router.get("/",function(req,resp){
-    var myGroupList=DBFunctions.getMyGroups(req.session.email);
-    console.log(myGroupList);
-    resp.render("groups",{myGroups:myGroupList});
+    var userEmail = req.session.email
+    console.log("userEmail: ",userEmail);
+    var myGroupList=DBFunctions.getMyGroups(userEmail);   //groupsDBFunction1
+    var groupMembersList= DBFunctions.getGroupObject(myGroupList[0],userEmail)
+    console.log("groupMembersList: ",groupMembersList);
+    if(groupMembersList==undefined){
+        var memberList=""
+    }else{
+        var memberList=groupMembersList.members;
+    }
+    console.log("myGroupList ",myGroupList);
+    console.log("myGroupList[0] ",myGroupList[0])
+    resp.render("groups",{myGroups:myGroupList,fristGroup:myGroupList[0],firstGroupMembers:memberList});
 });
 
 

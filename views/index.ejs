@@ -5,9 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Yalla Notlob</title>
-    <!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:600' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:600' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/style/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/style/animate/animate.css" />
@@ -16,6 +16,40 @@
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="assets/style/style2.css">
+
+        <style>
+.column {
+  padding-left: 27px;
+  float: left;
+  width: 20%;
+  margin-bottom: 6px;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 85%
+}
+.teamcontainer {
+  width: 50%;
+}
+.title {
+  color: grey;
+}
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #A2B70D;
+  text-align: center;
+  cursor: pointer;
+  width: 15%;
+}
+.button:hover {
+  background-color: #555;
+}
+</style>
+
     </head>
 
     <body>
@@ -30,12 +64,10 @@
                           <a class="navbar-brand" href="#home" ><img src="assets/images/logo.png" alt="logo" style="margin-top: -70px;width: 200px;"></a>
                           <!-- #Logo Ends -->
                         </div>
-
                         <!-- Nav Bar Starts -->
-                        <div class="navbar-collapse  collapse">
+                        <div class="navbar-collapse  collapse scroll">
                           <ul class="nav navbar-nav navbar-right scroll">
-                             <li ><a href="#aboutUs">About Usss</a></li>
-                             <li ><a href="#contact">Contact</a></li>
+                             <li ><a href="#aboutUs">About Us</a></li>
                           </ul>
                         </div>
                         <!-- #Nav Ends -->
@@ -68,18 +100,22 @@
                 			        <div class="sign-in-htm">
                 				        <div class="group">
                 				            <label for="user" class="label">Email</label>
-                			                <input id="user" type="text" class="input logEmail" name="email">
+                			                <input id="user" type="email"class="input logEmail" name="email" required>
                 			            </div>
                 			            <div class="group">
                 			                <label for="pass" class="label">Password</label>
-                			                <input id="pass" type="password" class="input" data-type="password" name="password">
+                			                <input id="pass" type="password"class="input" data-type="password" name="password" required>
                 			            </div>
                 			            <div class="group">
                 			                <input type="submit" class="button" id="signInBtn" value="Sign In">
                 			            </div>
                 			            <div class="hr"></div>
+                                  </form>
                 			            <div class="foot-lnk">
-                					        <a href="#forgot">Forgot Password?</a>
+                                    <form  class="" action="/forgotPass"  method="post" >
+                                      <input type="submit" id="forgotPassword" value="forgot Password?">
+                                      <!-- <button type="submit" style="background-color:transparent">Forgotgtt Password?</button> -->
+                                    </form>
                 				        </div>
                                         <!-- zaynab -->
                                         <!-- missing style -->
@@ -95,24 +131,24 @@
                                   <a href="#goole"><img src="assets/images/google.png" width="70px" height="70px"></a>
                 				        </div>
                 			        </div>
-                                </form>
+                            <!-- edited -->
                 			        <div class="sign-up-htm">
                                         <form class="" action="/signupAuth" method="post">
                 				        <div class="group">
                 					        <label for="user" class="label">Username</label>
-                					        <input id="user" type="text" class="input" name="name">
+                					        <input id="user" type="text"class="input" name="name" required>
                 			            </div>
                                         <div class="group">
                 					        <label for="pass" class="label">Email</label>
-                					        <input id="pass" type="text" class="input logEmail" name="email">
+                					        <input id="pass" type="email"class="input logEmail" name="email" required>
                 				        </div>
                 		                <div class="group">
             				                <label for="pass" class="label">Password</label>
-                					        <input id="pass" type="password" class="input" data-type="password" name="password1">
+                					        <input id="pass" type="password"class="input" data-type="password" name="password1" min="5" required>
                 				        </div>
                 				        <div class="group">
                 					        <label for="pass" class="label">Confirm Password</label>
-                					        <input id="pass" type="password" class="input" data-type="password" name="password2">
+                					        <input id="pass" type="password"class="input" data-type="password" name="password2" required>
                 				        </div>
                                         <!-- zaynab -->
                                         <!-- missing style -->
@@ -125,7 +161,6 @@
                                                 <b></b>
                                             <% } %>
                                         </div>
-
                 				        <div class="group">
                 					        <input type="submit" class="button" id="signUpBtn" value="Sign Up">
                 				        </div>
@@ -139,6 +174,52 @@
             </div>
         </div>
     </div>
+
+    <div id="aboutUs">
+      <h1 class="team-title" >The Team</h1>
+      <div class="column">
+        <div class="card">
+          <img src="../assets/images/1.jpg" alt="John" class="team-card">
+          <div>
+            <h2 class="team-member-name">Asmaa Zakaria</h2>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <img src="../assets/images/1.jpg" alt="John" class="team-card">
+          <div >
+            <h2 class="team-member-name">Reem Essam</h2>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <img src="../assets/images/1.jpg" alt="John" class="team-card">
+          <div >
+            <h2 class="team-member-name">Sara Hassan</h2>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <img src="../assets/images/1.jpg" alt="John" class="team-card">
+          <div>
+            <h2 class="team-member-name">Samira Nassir</h2>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <img src="../assets/images/1.jpg" alt="John" class="team-card">
+          <div >
+            <h2 class="team-member-name">Zaynab Mohamed</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
     <!--....................................... jquery........................ -->
     <script src="assets/libraries/jquery.js"></script>

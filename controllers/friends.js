@@ -9,27 +9,10 @@ var mongoose=require("mongoose");
 //............................ friends Page ........................................
 //*****************************************************************************
 router.get("/",function(req,resp){
-    DBFunctions.getFriendsName(resp,req.session.email)
+    var friendList=DBFunctions.getFriendsEmail(req.session.email)
+    resp.render('friends',{FrindsEmail:friendList});
+    //DBFunctions.getFriendsName(resp,req.session.email)
 })
-//............................ UNFriend ........................................
-//*****************************************************************************
-// router.get("/unfriend/:friendEmail",function(req,resp){
-//     var myEmail=req.session.email;
-//     var frindEmail=req.params.friendEmail;
-//     mongoose.model("users").update({"email":myEmail},{$pull:{"friend":frindEmail}},function(err){
-//         resp.redirect("/friends");
-//         console.log("Done:Deleted!!");
-//     });
-// })
-//............................ ADD Friend ........................................
-// //***************************************************************************** CHEEEEEK
-// router.get("/addFriend/:friendEmail",function(req,resp){
-//     var myEmail=req.session.email;
-//     var frindEmail=req.params.friendEmail;
-//     mongoose.model("users").update({"email":Email},{$push:{"friend":"meera@iti.com"}},function(err)
-//         resp.redirect("/friends");
-//         console.log("Done:Deleted!!");
-//     });
-// })
+
 
 module.exports=router;

@@ -14,49 +14,47 @@
             <div class="caption-wrapper">
                 <div class="caption-info">
 
-                  <div class="add">
+                  <div class="add" style="margin-top:115px">
                     <div>
-                      <label for="user" class="heading" style="margin-left: -359px;">Your Friend's Email</label>
-                      <input id="friendemail2Add" type="text" style="margin-top: 25px;color:black;border-color: #EDEDED; box-shadow: 0px 0px 5px 5px #EDEDED; border-radius:5px">
+                      <label for="user" class="heading" style="margin-left: -362px;">Your Friend's Email</label>
+                      <input id="friendemail2Add" type="text">
                     </div>
-                    <div>
-                          <input type="submit" value="Add" id="addFreindBtn" style="margin-top: 25px;margin-right: 580px;">
-                          <p id="addFriendError"></p>
+                    <div style="width: 15%;">
+                        <button type="submit" id="addFreindBtn" class="btn btn-primary" style="width:49%; margin-left:212px;z-index: 1100;position: relative;">Add</button>
+                        <p id="addFriendError" style="font-size: 15px;margin-top: 24px;margin-left: 168px;z-index: 20000;position: relative;width: 276px;"></p>
                     </div>
                   </div>
 
                   <div class="border-wrap">
-                    <div class="friendsListBorder">
+                    <div class="friendsListBorder" style="overflow-x: auto;">
                       <h3 style="margin:10px">Friends List</h3>
                       <div class="wrapper row3">
                         <main class="hoc container clear">
                           <div class="sectiontitle">
                           </div>
                           <div class="group excerpts" id="friendsList">
-                            <%for (var i=0;i<FrindsName.length;i++){%>
-                            <article class="one_third">
+                            <%for (var i=0;i<FrindsEmail.length;i++){%>
+                            <article class="one_third" style="margin-top:-75px;">
                               <div class="hgroup">
-                                <h6 class="heading"><%=FrindsName[i]%></h6>
-                                <p  style={display="none"} ><%=FrindsEmail[i]%></p>
+                                <h6 class="heading" style="color: goldenrod;"><%=FrindsEmail[i]%></h6>
+                                <p  style="display:none"><%=FrindsEmail[i]%></p>
                               </div>
-                              <img src="../assets/images/1.jpg" alt="">  <!--chaange this-->
-                              <footer><button id="<%=FrindsEmail[i]%>" type="button" class="btn" >UnFriend &raquo;</bbutton></footer>
+                              <img src="../assets/images/1.jpg" alt="">
+                              <footer><button id="<%=FrindsEmail[i]%>" type="button" class="btn removeClass" >UnFriend &raquo;</button></footer>
                             </article>
                             <%}%>
                           </div>
                           <div class="clear"></div>
                         </main>
                       </div>
-                    <!-- </div>
-                  </div> -->
-<!--
+                    </div>
+                  </div>
+                </div>
                 </div>
             </div>
         </div>
     </div>
-</div> -->
-
-
+</div>
     <!--....................................... jquery........................ -->
     <script src="assets/libraries/jquery.js"></script>
     <script src="assets/libraries/wow.min.js"></script>
